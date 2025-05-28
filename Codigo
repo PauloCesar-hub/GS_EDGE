@@ -1,0 +1,65 @@
+#include <DHT.h>
+#include <LiquidCrystal_I2C.h>
+
+// Definição dos pinos
+#define RED_LED 2
+#define YELLOW_LED 3
+#define GREEN_LED 4
+#define BUZZER 5
+#define DHTPIN 6
+#define RAIN_SENSOR A1
+#define WATER_SENSOR A0
+#define DHTTYPE DHT22
+
+// Inicialização dos sensores e display
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
+
+  Serial.begin(9600);
+  dht.begin();
+  lcd.init();
+  lcd.backlight();
+}
+
+void loop() {
+  int waterLevel = analogRead(WATER_SENSOR);
+  int rain = analogRead(RAIN_SENSOR);
+  float temperature = dht.readTemperature();
+  float humidity = dht.readHumidity();
+
+  lcd.setCursor(0, 0);
+  lcd.print("T:");
+  lcd.print(temperature);
+  lcd.print("C H:");
+  lcd.print(humidity);
+  lcd.print("%");
+
+  lcd.setCursor(0, 1);
+  if (waterLevel < 300) {
+    lcd.print("Nivel: Baixo    ");
+    digitalWrite(GREEN_LED, HIGH);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(BUZZER, LOW);
+  } else if (waterLevel >= 300 && waterLevel < 700) {
+    lcd.print("Nivel: Medio    ");
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, HIGH);
+    digitalWrite(RED_LED, LOW);
+    tone(BUZZER, 1000, 500);
+  } else {
+    lcd.print("Nivel: Alto!    ");
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(BUZZER, HIGH);
+  }
+
+  delay(2000);
+}
