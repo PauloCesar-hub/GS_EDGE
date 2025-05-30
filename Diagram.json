@@ -4,7 +4,13 @@
   "editor": "wokwi",
   "parts": [
     { "type": "wokwi-arduino-uno", "id": "uno", "top": 50, "left": 100, "attrs": {} },
-    { "type": "wokwi-dht22", "id": "dht", "top": -210.9, "left": 273, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -210.9,
+      "left": 273,
+      "attrs": { "temperature": "80", "humidity": "100" }
+    },
     { "type": "wokwi-potentiometer", "id": "pot_water", "top": -78.1, "left": 124.6, "attrs": {} },
     { "type": "wokwi-potentiometer", "id": "pot_rain", "top": -78.1, "left": 355, "attrs": {} },
     {
@@ -58,7 +64,9 @@
     [ "lcd1:GND", "uno:GND.2", "black", [ "h0" ] ],
     [ "lcd1:VCC", "uno:5V", "red", [ "h0" ] ],
     [ "lcd1:SDA", "uno:A4", "green", [ "h0" ] ],
-    [ "lcd1:SCL", "uno:A5", "green", [ "h0" ] ]
+    [ "lcd1:SCL", "uno:A5", "green", [ "h0" ] ],
+    [ "dht:GND", "uno:GND.3", "black", [ "v0" ] ],
+    [ "dht:SDA", "uno:6", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }
