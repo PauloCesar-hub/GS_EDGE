@@ -1,7 +1,7 @@
 #include <DHT.h>
 #include <LiquidCrystal_I2C.h>
 
-// Definição dos pinos
+// Pinos e componentes
 #define RED_LED 2
 #define YELLOW_LED 3
 #define GREEN_LED 4
@@ -11,7 +11,6 @@
 #define WATER_SENSOR A0
 #define DHTTYPE DHT22
 
-// Inicialização dos sensores e display
 DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
@@ -23,8 +22,13 @@ void setup() {
 
   Serial.begin(9600);
   dht.begin();
+  delay(2000);  // Aguarda o sensor iniciar
+
   lcd.init();
   lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("Iniciando...");
+  delay(2000);
 }
 
 void loop() {
@@ -33,28 +37,35 @@ void loop() {
   float temperature = dht.readTemperature();
   float humidity = dht.readHumidity();
 
+  lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("T:");
-  lcd.print(temperature);
-  lcd.print("C H:");
-  lcd.print(humidity);
-  lcd.print("%");
+
+  if (isnan(temperature) || isnan(humidity)) {
+    lcd.print("Erro sensor DHT!");
+    Serial.println("Falha na leitura do DHT22.");
+  } else {
+    lcd.print("T:");
+    lcd.print(temperature, 1);
+    lcd.print("C H:");
+    lcd.print(humidity, 0);
+    lcd.print("%");
+  }
 
   lcd.setCursor(0, 1);
   if (waterLevel < 300) {
-    lcd.print("Nivel: Baixo    ");
+    lcd.print("Nivel: Baixo   ");
     digitalWrite(GREEN_LED, HIGH);
     digitalWrite(YELLOW_LED, LOW);
     digitalWrite(RED_LED, LOW);
     digitalWrite(BUZZER, LOW);
-  } else if (waterLevel >= 300 && waterLevel < 700) {
-    lcd.print("Nivel: Medio    ");
+  } else if (waterLevel < 700) {
+    lcd.print("Nivel: Medio   ");
     digitalWrite(GREEN_LED, LOW);
     digitalWrite(YELLOW_LED, HIGH);
     digitalWrite(RED_LED, LOW);
     tone(BUZZER, 1000, 500);
   } else {
-    lcd.print("Nivel: Alto!    ");
+    lcd.print("Nivel: ALTO!!! ");
     digitalWrite(GREEN_LED, LOW);
     digitalWrite(YELLOW_LED, LOW);
     digitalWrite(RED_LED, HIGH);
