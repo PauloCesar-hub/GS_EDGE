@@ -77,8 +77,8 @@ void loop() {
 
   delay(2000);
 }
-📽️ Demonstração em Vídeo()
-🔗 Link do Projeto no wokwi (https://wokwi.com/projects/429233134750736385)
+-📽️ Demonstração em Vídeo()
+-🔗 Link do Projeto no wokwi (https://wokwi.com/projects/429233134750736385)
 
 📁 Organização do Repositório
 bash
