@@ -1,8 +1,9 @@
-🌊 Projeto: Sistema Físico de Monitoramento de Enchentes com Arduino (Edge Computing & IoT)
-🆘 Problema Identificado
+# 🌊 Projeto: Sistema Físico de Monitoramento de Enchentes com Arduino (Edge Computing & IoT)
+
+## 🆘 Problema Identificado
 Enchentes são um problema recorrente em muitas cidades brasileiras, especialmente em áreas de risco onde o escoamento pluvial é precário. A falta de sistemas de alerta locais pode agravar a situação, resultando em perdas materiais e, em casos mais graves, vítimas fatais.
 
-🎯 Solução Proposta
+##🎯 Solução Proposta
 Este projeto propõe um sistema físico de monitoramento de enchentes usando sensores conectados a um Arduino Uno, com capacidade de detectar:
 
 Temperatura e umidade relativa do ar (indicadores meteorológicos)
@@ -13,7 +14,7 @@ Intensidade de chuva (simulado por outro potenciômetro)
 
 O sistema emite alertas locais com LEDs e buzzer, além de mostrar os dados em tempo real em um display LCD.
 
-🧰 Componentes Utilizados
+## 🧰 Componentes Utilizados
 Componente	Função
 Arduino Uno	Unidade de controle central
 Sensor DHT22	Leitura de temperatura e umidade
@@ -22,7 +23,7 @@ Display LCD 16x2 I2C	Exibição das informações
 LEDs (Verde, Amarelo, Vermelho)	Indicação visual do nível de água
 Buzzer	Alarme sonoro em caso de alerta
 
-🖥️ Simulação no Wokwi
+## 🖥️ Simulação no Wokwi
 Este projeto pode ser simulado gratuitamente na plataforma Wokwi. Para isso:
 
 Importe o arquivo diagram.json:
@@ -77,19 +78,11 @@ void loop() {
 
   delay(2000);
 }
--📽️ Demonstração em Vídeo()
+
 -🔗 Link do Projeto no wokwi (https://wokwi.com/projects/429233134750736385)
 
-📁 Organização do Repositório
-bash
-Copiar
-Editar
-.
-├── diagram.json
-├── sketch.ino              # Código-fonte para o Arduino
-├── README.md               # Descrição detalhada do projeto
-└── /assets                 # Imagens ou capturas de tela (opcional)
-✅ Avaliação Funcional
+
+## ✅ Avaliação Funcional
 Este projeto foi testado e validado no simulador Wokwi, com todas as funcionalidades operando corretamente:
 
 Leitura e exibição de temperatura e umidade
