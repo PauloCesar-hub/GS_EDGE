@@ -78,7 +78,7 @@ void loop() {
 
   delay(2000);
 }
-
+- 🔗 Link do Video Explicativo do Projeto no Youtube (https://youtube.com/shorts/RG7EyCWfr2E)
 -🔗 Link do Projeto no wokwi (https://wokwi.com/projects/429233134750736385)
 ![tecnologias](https://github.com/user-attachments/assets/78bdeea2-498c-4956-a869-2dd01958c464)
 
