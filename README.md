@@ -83,7 +83,7 @@ void loop() {
 
 -🔗 [Link do Projeto no wokwi](https://wokwi.com/projects/429233134750736385)
 
-![tecnologias](https://github.com/user-attachments/assets/78bdeea2-498c-4956-a869-2dd01958c464)
+![tecnologias]()
 
 
 ## ✅ Avaliação Funcional
